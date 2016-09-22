@@ -3,6 +3,7 @@
 var Application = require("neat-base").Application;
 var Module = require("neat-base").Module;
 var Tools = require("neat-base").Tools;
+var Element = require('./lib/Element.js');
 var fs = require("fs");
 var merge = require("merge");
 var Promise = require("bluebird");
@@ -31,6 +32,7 @@ module.exports = class Elements extends Module {
             this.log.debug("Initializing...");
 
             this.elements = {};
+            this.Element = Element;
             this.knownMissingElements = [];
 
             return this.loadElements().then(resolve, reject);
@@ -407,3 +409,5 @@ module.exports = class Elements extends Module {
         });
     }
 }
+
+module.exports.Element = Element;
