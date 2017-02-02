@@ -284,6 +284,7 @@ module.exports = class Elements extends Module {
 
                     returnVal.config = element.config.config || {};
                     returnVal.element = elementConfig.element;
+                    returnVal.statusCodeIfError = element.config.statusCodeIfError;
                     returnVal.esi = element.esi || false;
                     returnVal.id = elementConfig.element.split(".").shift();
 
