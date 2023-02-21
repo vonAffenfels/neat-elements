@@ -313,13 +313,14 @@ module.exports = class Elements extends Module {
 
                     return new Promise((resolve, reject) => {
                         returnVal.startTime = new Date();
+                        const timeout = elementConfig.timeout || 5000;
 
                         tooLong = setTimeout(() => {
-                            this.log.warn("Element " + elementConfig.element + " took more than 5 seconds!", req.path);
-                            var tooLongError = new Error("Element " + elementConfig.element + " took more than 5 seconds!");
+                            this.log.warn("Element " + elementConfig.element + " took more than " + timeout / 1000 + " seconds!", req.path);
+                            var tooLongError = new Error("Element " + elementConfig.element + " took more than " + timeout / 1000 + " seconds!");
                             tooLongError.tooLong = true;
                             reject(tooLongError);
-                        }, 5000);
+                        }, timeout);
 
                         try {
                             if (element.esi && !req.esi && req.method === "GET" && this.config.esiEnabled) {
