@@ -313,7 +313,7 @@ module.exports = class Elements extends Module {
 
                     return new Promise((resolve, reject) => {
                         returnVal.startTime = new Date();
-                        const timeout = elementConfig.timeout || 5000;
+                        const timeout = element.config.timeout || 5000;
 
                         tooLong = setTimeout(() => {
                             this.log.warn("Element " + elementConfig.element + " took more than " + timeout / 1000 + " seconds!", req.path);
